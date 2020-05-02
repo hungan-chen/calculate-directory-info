@@ -19,13 +19,13 @@ fi
 
 SCRIPT_FILE=$(basename $0)
 FIND_OUTPUT=$1
-SKPI_KEY="^$|proc"
+SKIP_KEY="^$|proc"
 
 ########################################
 #  main 
 ########################################
 
-grep -vE ${SKPI_KEY}  "${FIND_OUTPUT}"  | awk 'BEGIN {
+grep -vE ${SKIP_KEY}  "${FIND_OUTPUT}"  | awk 'BEGIN {
 
 }
 
