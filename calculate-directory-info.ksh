@@ -22,6 +22,20 @@ FIND_OUTPUT=$1
 SKIP_KEY="^$|proc"
 
 ########################################
+#  check input file
+########################################
+
+CHECK_FILE_LIST="${FIND_OUTPUT}"
+CHECK_FILE_RC=$(ls ${CHECK_FILE_LIST}  > /dev/null 2>&1 ; echo $?)
+
+if [[ ${CHECK_FILE_RC} -ne 0 ]] ; then
+for NN in ${CHECK_FILE_LIST} ; do 
+echo  "${NN} file not exist, please check !!"
+done
+exit 
+fi
+
+########################################
 #  main 
 ########################################
 
