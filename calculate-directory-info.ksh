@@ -21,23 +21,34 @@ SCRIPT_FILE=$(basename $0)
 FIND_OUTPUT=$1
 SKIP_KEY="^$|proc"
 
+
+CHECK_FILE_LIST="${FIND_OUTPUT}"
+
+
 ########################################
-#  check input file
+# function 
 ########################################
+
+function function_check_file {
+### set -x 
 
 CHECK_FILE_LIST="${FIND_OUTPUT}"
 CHECK_FILE_RC=$(ls $"{CHECK_FILE_LIST}"  > /dev/null 2>&1 ; echo $?)
 
 if [[ ${CHECK_FILE_RC} -ne 0 ]] ; then
-for NN in ${CHECK_FILE_LIST} ; do 
-echo  "${NN} file not exist, please check !!"
-done
-exit 
+echo "$(date)|ERROR"
+ls -ld "${CHECK_FILE_LIST}"
+exit
 fi
+
+}
+
 
 ########################################
 #  main 
 ########################################
+
+function_check_file
 
 grep -vE ${SKIP_KEY}  "${FIND_OUTPUT}"  | awk 'BEGIN {
 
