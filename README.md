@@ -1,1 +1,1 @@
-# calculate_directory_info
+# calculate-directory-info
