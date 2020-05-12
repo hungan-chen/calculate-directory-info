@@ -33,11 +33,11 @@ function function_check_file {
 ### set -x 
 
 CHECK_FILE_LIST="${FIND_OUTPUT}"
-CHECK_FILE_RC=$(ls $"{CHECK_FILE_LIST}"  > /dev/null 2>&1 ; echo $?)
+CHECK_FILE_RC=$(ls "${CHECK_FILE_LIST}"  > /dev/null 2>&1 ; echo $?)
 
 if [[ ${CHECK_FILE_RC} -ne 0 ]] ; then
 echo "$(date)|ERROR"
-ls -ld "${CHECK_FILE_LIST}"
+ls -l "${CHECK_FILE_LIST}"
 exit
 fi
 
